@@ -1,15 +1,10 @@
 .gradle
-<<<<<<< HEAD
 gradlew
 gradlew.bat
 build/
 /.idea/workspace.xml
 .idea/
 /local.properties
-=======
-<<<<<<< HEAD
-/local.properties
-/.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
@@ -37,11 +32,6 @@ local.properties
 
 
 # Android Studio
-gradlew
-gradlew.bat
-build/
-.idea/
->>>>>>> 2bbdc4331bedc34ae42e5af41fe62315ddbbd227
 /*/local.properties
 /*/out
 /*/*/build
@@ -51,12 +41,8 @@ build/
 *.swp
 *.ipr
 *.iws
-<<<<<<< HEAD
 /app/src/main/assets/crashlytics-build.properties
-
-
 app/src/main/res/values/com_crashlytics_export_strings.xml
-=======
 
 # backup files
 *.bak
@@ -66,6 +52,3 @@ app/src/main/res/values/com_crashlytics_export_strings.xml
 com_crashlytics_export_strings.xml
 crashlytics-build.properties
 
-/app/src/main/assets/crashlytics-build.properties
-app/src/main/res/values/com_crashlytics_export_strings.xml
->>>>>>> 2bbdc4331bedc34ae42e5af41fe62315ddbbd227
