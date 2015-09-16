@@ -2,9 +2,13 @@ package com.learn.util;
 
 import com.learn.model.LoggedInUser;
 import com.learn.model.LoginRequest;
+import com.learn.model.RegionList;
 
-import retrofit.Call;
+import java.util.ArrayList;
+
+import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.GET;
 import retrofit.http.POST;
 
 /**
@@ -13,5 +17,12 @@ import retrofit.http.POST;
 public interface ApiService {
 
     @POST("/Login")
-    Call<LoggedInUser> login(@Body LoginRequest loginRequest);
+    public void login(@Body LoginRequest loginRequest, Callback<LoggedInUser> callback);
+
+
+
+    @GET("/GetRegionList")
+    public void getRegionList(Callback<ArrayList<RegionList>> callback);
+
+
 }
