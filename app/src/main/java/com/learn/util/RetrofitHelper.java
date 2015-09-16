@@ -5,11 +5,15 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit.RestAdapter;
+
+import retrofit.client.OkClient;
+import retrofit.converter.GsonConverter;
 
 /**
  * Created by shivam on 12/9/15.
@@ -25,12 +29,24 @@ public class RetrofitHelper {
 
             if (apiService == null) {
 
-                Retrofit builder = new Retrofit.Builder()
-                        .baseUrl(BASE_URL_FOR_DEBUG)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+                OkHttpClient okHttpClient = new OkHttpClient();
+                okHttpClient.setConnectTimeout(60, TimeUnit.SECONDS);
+                Gson gson = new GsonBuilder()
+                        .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                        .registerTypeAdapter(Date.class, new DateTypeAdapter())
+                        .create();
 
-                apiService = builder.create(ApiService.class);
+                RestAdapter.Builder builder = new RestAdapter.Builder()
+                        .setConverter(new GsonConverter(gson))
+                        .setClient(new OkClient(okHttpClient));
+
+                RestAdapter restAdapter;
+
+                    builder.setEndpoint(BASE_URL_FOR_DEBUG);
+                    restAdapter = builder.build();
+                    restAdapter.setLogLevel(RestAdapter.LogLevel.FULL);
+
+               apiService = restAdapter.create(ApiService.class);
             }
             return apiService;
 
