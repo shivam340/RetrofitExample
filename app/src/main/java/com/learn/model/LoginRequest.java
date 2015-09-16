@@ -6,9 +6,8 @@ import com.google.gson.annotations.Expose;
  * Created by chetan on 15/05/15.
  */
 public class LoginRequest {
-    @Expose
+
     private String LoginID;
-    @Expose
     private String Password;
 
     public LoginRequest(String loginID, String password) {
